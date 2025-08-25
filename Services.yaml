@@ -4,7 +4,7 @@ metadata:
   name: patrones1
   namespace: patrones1
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app:  patrones1
@@ -75,7 +75,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: patrones1
-  minReplicas: 2
+  minReplicas: 1
   maxReplicas: 5
   metrics:
   - type: Resource
