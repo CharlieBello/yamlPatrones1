@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: patrones1-app    
+  namespace: argocd      
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/CharlieBello/yamlPatrones1
+    path: .              
+    targetRevision: HEAD 
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: patrones1
+  syncPolicy:
+    automated:
+      prune: true        
+      selfHeal: true  
