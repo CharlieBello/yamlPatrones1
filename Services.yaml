@@ -27,15 +27,30 @@ spec:
             cpu: "500m"
         env:
         - name: DB_HOST
-          value: patrones1-postgres-service.patrones1.svc.cluster.local
+          valueFrom:
+            configMapKeyRef:
+              name: patrones1-config
+              key: DB_HOST
         - name: DB_PORT
-          value: "5432"
+          valueFrom:
+            configMapKeyRef:
+              name: patrones1-config
+              key: DB_PORT
         - name: DB_USER
-          value: "postgres"
-        - name: DB_PASSWORD
-          value: "mypassword"
+          valueFrom:
+            configMapKeyRef:
+              name: patrones1-config
+              key: DB_USER
         - name: DB_NAME
-          value: "stringdb"
+          valueFrom:
+            configMapKeyRef:
+              name: patrones1-config
+              key: DB_NAME
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: patrones1-secret
+              key: DB_PASSWORD
 ---
 apiVersion: v1
 kind: Service
