@@ -18,20 +18,11 @@ spec:
         image: postgres:15
         env:
         - name: POSTGRES_USER
-          valueFrom:
-            configMapKeyRef:
-              name: patrones1-config
-              key: DB_USER
+          value: "postgres"
         - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: patrones1-secret
-              key: DB_PASSWORD
+          value: "mypassword"
         - name: POSTGRES_DB
-          valueFrom:
-            configMapKeyRef:
-              name: patrones1-config
-              key: DB_NAME
+          value: "stringdb"
         - name: PGDATA
           value: "/var/lib/postgresql/pgdata"
         ports:
